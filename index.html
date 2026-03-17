@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GitHub Update Checker (WASM + Worker)</title>
+    <style>
+      body {
+        font-family: system-ui, Arial;
+        margin: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 12px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background: #f4f4f4;
+      }
+      tr.ok {
+        background: #e6ffea;
+      } /* up-to-date: green */
+      tr.minor {
+        background: #fff7e6;
+      } /* minor update: yellow */
+      tr.major {
+        background: #ffe6e6;
+      } /* major update: red */
+      tr.error {
+        background: #f8d7da;
+      } /* error: light red */
+      .small {
+        font-size: 0.9em;
+        color: #666;
+      }
+      #progress {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>GitHub Update Checker (CSV → Worker → WASM)</h3>
+
+    <p>
+      CSV Format: <code>Name,URL,Version</code> (one entry per line). Beispiel:
+      <code>nlohmann/json,https://github.com/nlohmann/json,3.11.2</code>
+    </p>
+
+    <input id="file" type="file" accept=".csv" />
+    <button id="start">Start Checks</button>
+    <div id="progress" class="small"></div>
+
+    <table id="results">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Repo URL</th>
+          <th>Local Version</th>
+          <th>Latest (remote)</th>
+          <th>Status</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="main.js"></script>
+  </body>
+</html>
