@@ -16,8 +16,20 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
+
+- [Features](#features)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Files](#files)
+  - [Build WASM with Emscripten](#build-wasm-with-emscripten)
+- [Usage](#usage)
+- [CSV Format](#csv-format)
+- [Error Handling and Rate Limits](#error-handling-and-rate-limits)
+- [Extending and Customizing](#extending-and-customizing)
+- [📝 License](#-license)
+- [Author](#author)
+  - [Code Contributors](#code-contributors)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
