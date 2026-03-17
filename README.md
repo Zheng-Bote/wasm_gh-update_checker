@@ -1,5 +1,5 @@
 <div id="top" align="center">
-  <h1>GitHub Update Checker WASM Worker</h1>
+  <h1>GitHub Update Checker (Web WASM)</h1>
 
   <p>browser‑based tool that checks GitHub repositories for the latest release and compares it with local versions supplied in a CSV file.</p>
   
