@@ -64,10 +64,11 @@ function updateRowResult(id, latest, status, note) {
   // Tooltip mit kompletter Meldung
   if (note) noteCell.title = note;
 
-  tr.classList.remove("ok", "minor", "major", "error");
+  tr.classList.remove("ok", "minor", "major", "patch", "error");
   if (status === "ok") tr.classList.add("ok");
   else if (status === "minor") tr.classList.add("minor");
   else if (status === "major") tr.classList.add("major");
+  else if (status === "patch") tr.classList.add("patch");
   else if (status === "error") tr.classList.add("error");
 }
 

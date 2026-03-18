@@ -16,9 +16,11 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Quick Start](#quick-start)
   - [Prerequisites](#prerequisites)
   - [Files](#files)
@@ -47,6 +49,10 @@
 - **Asynchronous, incremental UI updates**: each row is updated as soon as its result arrives.
 - **Color coded results**: green = up to date, yellow = minor update, red = major update, red (error) = request or parse error.
 - **Human friendly error messages** for HTTP and API errors.
+
+## Screenshots
+
+![Screenshot](docs/screenshot.png)
 
 ---
 

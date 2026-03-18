@@ -1,4 +1,23 @@
-// check_gh_update.cpp
+/**
+ * SPDX-FileComment: GitHub Update Checker WASM Worker
+ * SPDX-FileType: SOURCE
+ * SPDX-FileContributor: ZHENG Robert
+ * SPDX-FileCopyrightText: 2026 ZHENG Robert
+ * SPDX-License-Identifier: MIT
+ *
+ * @file check_gh_update.cpp
+ * @brief WASM build with Emscripten for a GitHub Update Checker. browser‑based
+ * tool that checks GitHub repositories for the latest release and compares it
+ * with local versions supplied in a CSV file.
+ * @version 0.1.0
+ * @date 2026-03.17
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
+
 #include <cstdlib>
 #include <cstring>
 #include <emscripten/emscripten.h>
