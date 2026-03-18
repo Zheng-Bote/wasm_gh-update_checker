@@ -1,11 +1,11 @@
-// main.js
+// main.js - supports CSV or JSON upload
 const fileInput = document.getElementById("file");
 const startBtn = document.getElementById("start");
 const tbody = document.querySelector("#results tbody");
 const progress = document.getElementById("progress");
 
 let worker = null;
-let rows = new Map(); // id -> tr
+let rows = new Map();
 
 function parseCSV(text) {
   const lines = text
@@ -15,7 +15,6 @@ function parseCSV(text) {
   const items = [];
   let id = 1;
   for (const line of lines) {
-    // Accept both "name,url,version" and "url,version" (name optional)
     const parts = line.split(",").map((p) => p.trim());
     if (parts.length >= 3) {
       items.push({
@@ -36,6 +35,27 @@ function parseCSV(text) {
   return items;
 }
 
+function parseJSON(text) {
+  try {
+    const arr = JSON.parse(text);
+    if (!Array.isArray(arr))
+      throw new Error("JSON must be an array of objects");
+    const items = [];
+    let id = 1;
+    for (const obj of arr) {
+      if (!obj) continue;
+      const url = obj.url || obj.repo || obj.repository || obj.repoUrl;
+      const version = obj.version || obj.localVersion || obj.current;
+      const name = obj.name || url || `item-${id}`;
+      if (!url || !version) continue;
+      items.push({ id: id++, name, url, version });
+    }
+    return items;
+  } catch (e) {
+    throw new Error("Invalid JSON file: " + e.message);
+  }
+}
+
 function addRow(item) {
   const tr = document.createElement("tr");
   tr.dataset.id = item.id;
@@ -52,7 +72,6 @@ function addRow(item) {
   rows.set(item.id, tr);
 }
 
-// main.js - updateRowResult Ergänzung (Ausschnitt)
 function updateRowResult(id, latest, status, note) {
   const tr = rows.get(id);
   if (!tr) return;
@@ -60,10 +79,7 @@ function updateRowResult(id, latest, status, note) {
   tr.querySelector(".status").textContent = status;
   const noteCell = tr.querySelector(".note");
   noteCell.textContent = note || "";
-
-  // Tooltip mit kompletter Meldung
   if (note) noteCell.title = note;
-
   tr.classList.remove("ok", "minor", "major", "patch", "error");
   if (status === "ok") tr.classList.add("ok");
   else if (status === "minor") tr.classList.add("minor");
@@ -88,13 +104,29 @@ function escapeAttr(s) {
 startBtn.addEventListener("click", async () => {
   const file = fileInput.files[0];
   if (!file) {
-    alert("Bitte CSV-Datei auswählen");
+    alert("Please select a CSV or JSON file");
     return;
   }
   const text = await file.text();
-  const items = parseCSV(text);
-  if (items.length === 0) {
-    alert("Keine gültigen Einträge gefunden");
+  let items;
+  try {
+    const name = (file.name || "").toLowerCase();
+    if (name.endsWith(".json")) items = parseJSON(text);
+    else if (name.endsWith(".csv")) items = parseCSV(text);
+    else {
+      // Try to detect by content
+      const trimmed = text.trim();
+      if (trimmed.startsWith("[") || trimmed.startsWith("{"))
+        items = parseJSON(text);
+      else items = parseCSV(text);
+    }
+  } catch (e) {
+    alert("Failed to parse file: " + e.message);
+    return;
+  }
+
+  if (!items || items.length === 0) {
+    alert("No valid entries found");
     return;
   }
 
@@ -103,10 +135,8 @@ startBtn.addEventListener("click", async () => {
   rows.clear();
   progress.textContent = `Enqueued ${items.length} checks. Initializing worker...`;
 
-  // create rows
   for (const it of items) addRow(it);
 
-  // start worker
   if (worker) worker.terminate();
   worker = new Worker("worker.js");
 
@@ -114,7 +144,6 @@ startBtn.addEventListener("click", async () => {
     const msg = ev.data;
     if (msg.type === "ready") {
       progress.textContent = `Worker ready. Starting checks...`;
-      // send all jobs
       for (const it of items) {
         worker.postMessage({
           type: "enqueue",

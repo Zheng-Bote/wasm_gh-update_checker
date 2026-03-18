@@ -216,11 +216,13 @@ function processQueue() {
 onmessage = (ev) => {
   const msg = ev.data;
   if (msg && msg.type === "enqueue") {
+    // normalize: accept either localVersion or version
+    const localVersion = msg.localVersion ?? msg.version ?? msg.ver ?? "";
     queue.push({
       id: msg.id,
       name: msg.name,
       url: msg.url,
-      localVersion: msg.localVersion,
+      localVersion,
     });
     totalJobs++;
     processQueue();

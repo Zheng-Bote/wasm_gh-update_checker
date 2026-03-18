@@ -52,11 +52,14 @@
     <h3>GitHub Update Checker (CSV → Worker → WASM)</h3>
 
     <p>
-      CSV Format: <code>Name,URL,Version</code> (one entry per line). Beispiel:
-      <code>nlohmann/json,https://github.com/nlohmann/json,3.11.2</code>
+      CSV Format: <code>Name,URL,Version</code> or JSON:
+      <code
+        >[{"name":"nlohmann/json","url":"https://github.com/nlohmann/json","version":"3.11.2"},
+        ...]</code
+      >
     </p>
 
-    <input id="file" type="file" accept=".csv" />
+    <input id="file" type="file" accept=".csv,.json" />
     <button id="start">Start Checks</button>
     <div id="progress" class="small"></div>
 

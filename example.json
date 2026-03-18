@@ -1,0 +1,82 @@
+[
+  {
+    "name": "file-sorter",
+    "url": "https://github.com/Zheng-Bote/file-sorter",
+    "version": "v1.2.1"
+  },
+  {
+    "name": "qt-desktop_file_encryption-decryption",
+    "url": "https://github.com/Zheng-Bote/qt-desktop_file_encryption-decryption",
+    "version": "v2.1.0"
+  },
+  {
+    "name": "qt-cli_file_encryption-decryption",
+    "url": "https://github.com/Zheng-Bote/qt-cli_file_encryption-decryption",
+    "version": "v2.0.0"
+  },
+  {
+    "name": "nlohmann/json",
+    "url": "https://github.com/nlohmann/json",
+    "version": "v2.11.2"
+  },
+  {
+    "name": "spdlog",
+    "url": "https://github.com/gabime/spdlog",
+    "version": "v1.13.0"
+  },
+  {
+    "name": "jwt-cpp",
+    "url": "https://github.com/Thalhammer/jwt-cpp",
+    "version": "v0.7.0"
+  },
+  {
+    "name": "web-gallery_desktop-gallery",
+    "url": "https://github.com/Zheng-Bote/web-gallery_desktop-gallery",
+    "version": "v1.0.0"
+  },
+  {
+    "name": "qr_generator",
+    "url": "https://github.com/Zheng-Bote/qr_generator",
+    "version": "v0.2.0"
+  },
+  {
+    "name": "img2icon",
+    "url": "https://github.com/Zheng-Bote/img2icon",
+    "version": "v1.0.0"
+  },
+  {
+    "name": "cli_sshsync",
+    "url": "https://github.com/Zheng-Bote/cli_sshsync",
+    "version": "v1.1.0"
+  },
+  {
+    "name": "web-gallery_backend_h2o-drogon",
+    "url": "https://github.com/Zheng-Bote/web-gallery_backend_h2o-drogon",
+    "version": "v1.0.0"
+  },
+  {
+    "name": "qt_send_mail",
+    "url": "https://github.com/Zheng-Bote/qt_send_mail",
+    "version": "v0.1.3"
+  },
+  {
+    "name": "wasm_uploader",
+    "url": "https://github.com/Zheng-Bote/wasm_uploader",
+    "version": "v0.1.0"
+  },
+  {
+    "name": "gh-update-checker",
+    "url": "https://github.com/Zheng-Bote/gh-update-checker",
+    "version": "v1.0.6"
+  },
+  {
+    "name": "geocoding",
+    "url": "https://github.com/Zheng-Bote/geocoding",
+    "version": "v1.0.0"
+  },
+  {
+    "name": "get_poi-osm",
+    "url": "https://github.com/Zheng-Bote/get_poi-osm",
+    "version": "v1.0.0"
+  }
+]
