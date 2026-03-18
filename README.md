@@ -21,6 +21,8 @@
 - [Description](#description)
 - [Features](#features)
 - [Screenshots](#screenshots)
+  - [CSV](#csv)
+  - [JSON](#json)
 - [Quick Start](#quick-start)
   - [Prerequisites](#prerequisites)
   - [Files](#files)
