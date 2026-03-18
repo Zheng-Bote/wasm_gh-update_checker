@@ -57,7 +57,13 @@ GitHub Update Checker Web WASM is a browser tool that checks GitHub repositories
 
 ## Screenshots
 
-![Screenshot](docs/screenshot.png)
+### CSV
+
+![Screenshot csv](docs/screenshot_csv.png)
+
+### JSON
+
+![Screenshot json](docs/screenshot_json.png)
 
 ---
 
